@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 function UserInfo() {
   const dispatch = useDispatch();
   const { name, age } = useSelector((state) => state.user);
+
+  const [tempName, setTempName] = useState('');
+  const [tempAge, setTempAge] = useState('');
+
+  const handleSubmit = () => {
+    dispatch({ type: 'SET_NAME', payload: tempName });
+    dispatch({ type: 'SET_AGE', payload: parseInt(tempAge) });
+  };
 
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial' }}>
@@ -11,14 +19,20 @@ function UserInfo() {
 
       <input
         placeholder="Enter Name"
-        onChange={(e) => dispatch({ type: 'SET_NAME', payload: e.target.value })}
+        value={tempName}
+        onChange={(e) => setTempName(e.target.value)}
       />
       <br /><br />
+
       <input
         placeholder="Enter Age"
         type="number"
-        onChange={(e) => dispatch({ type: 'SET_AGE', payload: parseInt(e.target.value) })}
+        value={tempAge}
+        onChange={(e) => setTempAge(e.target.value)}
       />
+      <br /><br />
+
+      <button onClick={handleSubmit}>Submit</button>
       <br /><br />
 
       <h3>User Info:</h3>
