@@ -17,19 +17,10 @@ function UserInfo() {
     <div style={{ padding: '20px', fontFamily: 'Arial' }}>
       <h2>Redux Basic App</h2>
 
-      <input
-        placeholder="Enter Name"
-        value={tempName}
-        onChange={(e) => setTempName(e.target.value)}
-      />
+      <input placeholder="Enter Name" value={tempName} onChange={(e) => setTempName(e.target.value)}/>
       <br /><br />
 
-      <input
-        placeholder="Enter Age"
-        type="number"
-        value={tempAge}
-        onChange={(e) => setTempAge(e.target.value)}
-      />
+      <input placeholder="Enter Age" type="number" value={tempAge} onChange={(e) => setTempAge(e.target.value)}/>
       <br /><br />
 
       <button onClick={handleSubmit}>Submit</button>
